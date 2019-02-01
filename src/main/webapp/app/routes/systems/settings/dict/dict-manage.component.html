@@ -1,0 +1,62 @@
+<page-header [title]="'数据字典'"></page-header>
+<nz-card [nzBordered]="false">
+    <div nz-row>
+        <div nz-col nzSpan="24" style="text-align: right">
+            <button nz-button (click)="add()" [nzType]="'primary'">
+                <i nz-icon type="plus"></i>
+                <span>新建</span>
+            </button>
+        </div>
+    </div>
+    <nz-table
+        #ajaxTable
+        nzShowSizeChanger
+        [nzFrontPagination]="false"
+        [nzData]="dataSet"
+        [nzLoading]="loading"
+        [nzTotal]="total"
+        [(nzPageIndex)]="pageIndex"
+        [(nzPageSize)]="pageSize"
+        [nzShowTotal]="totalTemplate"
+        (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)"
+        [nzShowPagination]="true">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+        <tr>
+            <th nzShowSort nzSortKey="id">ID</th>
+            <th nzShowSort nzSortKey="name">键名</th>
+            <th nzShowSort nzSortKey="value">键值</th>
+            <th nzShowSort nzSortKey="description">描述</th>
+            <th nzShowSort nzSortKey="seq">序列号</th>
+            <th nzShowSort nzSortKey="remark">备注</th>
+            <th nzShowSort nzSortKey="status">状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataSet">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.value}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.seq}}</td>
+            <td>{{data.remark}}</td>
+            <td>
+                <ng-container [ngSwitch]="data.status">
+                    <span *ngSwitchCase="0">失效</span>
+                    <div *ngSwitchCase="1">激活</div>
+                    <div *ngSwitchDefault>失效</div>
+                </ng-container>
+            </td>
+            <td>
+                <a (click)="edit(data.id)">编辑</a>&nbsp;
+                <a (click)="delete(data.id)">删除</a>&nbsp;
+                <a (click)="check(data.id)">查看</a>&nbsp;
+            </td>
+        </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total>
+        总共 {{total}} 条
+    </ng-template>
+</nz-card>

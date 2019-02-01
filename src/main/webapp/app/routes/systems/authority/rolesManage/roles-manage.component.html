@@ -1,0 +1,44 @@
+<page-header [title]="'角色管理'"></page-header>
+<nz-card [nzBordered]="false">
+    <div nz-row>
+        <div nz-col nzSpan="24" style="text-align: right">
+            <button nz-button (click)="add()" [nzType]="'primary'">
+                <i nz-icon type="plus"></i>
+                <span>新建</span>
+            </button>
+        </div>
+    </div>
+    <nz-table
+        #ajaxTable
+        nzShowSizeChanger
+        [nzFrontPagination]="false"
+        [nzData]="dataSet"
+        [nzLoading]="loading"
+        [nzTotal]="total"
+        [(nzPageIndex)]="pageIndex"
+        [(nzPageSize)]="pageSize"
+        [nzShowTotal]="totalTemplate"
+        (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)"
+        [nzShowPagination]="true">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+        <tr>
+            <th nzShowSort nzSortKey="name">角色标识</th>
+            <th nzShowSort nzSortKey="label">角色名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataSet">
+            <td>{{data.name}}</td>
+            <td>{{data.label}}</td>
+            <td>
+                <a (click)="delete(data.name)">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total>
+        总共 {{total}} 条
+    </ng-template>
+</nz-card>

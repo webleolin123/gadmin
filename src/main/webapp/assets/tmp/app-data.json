@@ -1,0 +1,93 @@
+{
+    "app": {
+        "name": "Hibont",
+        "description": "Ng-zorro admin panel front-end framework"
+    },
+    "menu": [
+        {
+            "text": "主导航",
+            "i18n": "主导航",
+            "group": true,
+            "hideInBreadcrumb": true,
+            "children": [
+                {
+                    "text": "仪表盘",
+                    "i18n": "仪表盘",
+                    "icon": "anticon anticon-dashboard",
+                    "link": "/dashboard",
+                    "children": []
+                },
+                {
+                    "text": "高德地图",
+                    "i18n": "高德地图",
+                    "link": "/map/lbsamap",
+                    "icon": "anticon anticon-environment"
+                }
+            ]
+        },
+        {
+            "text": "系统模块",
+            "i18n": "系统模块",
+            "group": true,
+            "hideInBreadcrumb": true,
+            "children": [
+                {
+                    "text": "系统设置",
+                    "i18n": "系统设置",
+                    "icon": "anticon anticon-appstore",
+                    "children": [
+                        {
+                            "text": "数据字典",
+                            "link": "/systems/settings/dict",
+                            "i18n": "数据字典"
+                        },
+                        {
+                            "text": "浏览器支持",
+                            "link": "/systems/settings/browserSupport",
+                            "i18n": "浏览器支持"
+                        },
+                        {
+                            "text": "个人信息",
+                            "link": "/systems/user/settings/base",
+                            "i18n": "个人信息"
+                        }
+                    ]
+                },
+                {
+                    "text": "用户管理",
+                    "i18n": "用户管理",
+                    "icon": "anticon anticon-team",
+                    "children": [
+                        {
+                            "text": "个人信息",
+                            "link": "/systems/user/settings/base",
+                            "i18n": "个人信息"
+                        }
+                    ]
+                },
+                {
+                    "text": "权限管理",
+                    "i18n": "权限管理",
+                    "icon": "anticon anticon-security-scan",
+                    "children": [
+                        {
+                            "text": "角色管理",
+                            "link": "/systems/authority/roles",
+                            "i18n": "角色管理"
+                        },
+                        {
+                            "text": "人员管理",
+                            "link": "/systems/authority/personnel",
+                            "i18n": "人员管理"
+                        },
+                        {
+                            "text": "机构管理",
+                            "link": "/systems/authority/mechanism",
+                            "i18n": "机构管理"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
