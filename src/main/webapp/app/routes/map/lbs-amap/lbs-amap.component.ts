@@ -8,7 +8,7 @@ declare var $: any;
     styleUrls: ['../../../../styles/lbs-amap.css',],
     template: `
         <page-header [title]="'高德地图'"></page-header>
-        <!--<div id="outer-box">-->
+        <div id="outer-box">
             <div id="container" tabindex="0"></div>
             <!--<input type="text" id="keywords" [(ngModel)]="keywords" (keypress)="onKeyPress($event)" placeholder="请输入关键字"/>-->
             <!--<button id="toggleBtn" (click)="toggleBtn()" [value]="btnName">{{btnName}}</button>-->
@@ -17,7 +17,7 @@ declare var $: any;
                 <ul id="myList">
                 </ul>
             </div>
-        <!--</div>-->
+        </div>
     `,
 })
 export class LbsAmapComponent implements OnInit, OnDestroy {
@@ -102,9 +102,14 @@ export class LbsAmapComponent implements OnInit, OnDestroy {
         AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView', 'AMap.MapType', 'AMap.Geolocation'],
             () => {
                 // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
-                this.map.addControl(new AMap.ToolBar());
+                this.map.addControl(new AMap.ToolBar({
+                    offset:new AMap.Pixel(25,75),
+                }));
                 // 在图面添加比例尺控件，展示地图在当前层级和纬度下的比例尺
-                this.map.addControl(new AMap.Scale());
+                this.map.addControl(new AMap.Scale({
+                    offset:new AMap.Pixel(10,20),
+                    position:'LT',
+                }));
                 // 在图面添加鹰眼控件，在地图右下角显示地图的缩略图
                 // this.map.addControl(new AMap.OverView({isOpen: true}));
                 // 在图面添加类别切换控件，实现默认图层与卫星图、实施交通图层之间切换的控制
@@ -118,9 +123,10 @@ export class LbsAmapComponent implements OnInit, OnDestroy {
                     convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
                     showButton: true,        //显示定位按钮，默认：true
                     buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
-                    buttonOffset: new AMap.Pixel(10, 80),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                    buttonOffset: new AMap.Pixel(33, 425),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
                     showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
-                    showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+                    showCircle: true,        //定位成功后用圆圈表示定位精
+                    // 度范围，默认：true
                     panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
                     zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
                 });

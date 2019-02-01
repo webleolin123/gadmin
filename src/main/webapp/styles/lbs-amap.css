@@ -15,17 +15,23 @@ li{
 p{
     margin-bottom: 1px!important;
 }
-/*#outer-box{*/
-    /*height:100%;*/
-    /*padding-right:300px;*/
-/*}*/
-#container{
+div { margin:0 auto;}
+
+*html body {height:100%; }
+
+#outer-box{
     height: 100%;
+    min-height:100%;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-top: -24px;
+}
+#container{
     width: 100%;
-    /*position: fixed;*/
-    /*top: 15%;*/
-    /*left: 10%;*/
+    height: 853px;
+    min-height: 100%;
     outline:none;
+    margin-bottom: -24px;
 }
 #panel{
     margin-right: 10px;
@@ -192,3 +198,4 @@ p.poi-addr{
     margin: 7px;
     border-radius: 4px;
 }
+
